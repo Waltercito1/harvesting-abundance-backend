@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :reviews
   resources :harvest_sites
   resources :locations
   resources :trees
