@@ -6,10 +6,10 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-tree_a = Tree.create(type: "Black mulberry", description: "These trees are on public land and the berries are great.")
-tree_b = Tree.create(type: "Pear", description: "This tree is in private property. Contact me to collect.")
-tree_c = Tree.create(type: "Blackberry", description: "The beeries are ripe in July. Public land.")
-tree_d = Tree.create(type: "European crabapple", description: "These trees are by a beautiful park.")
+tree_a = Tree.create(name: "Black mulberry", description: "These trees are on public land and the berries are great.")
+tree_b = Tree.create(name: "Pear", description: "This tree is in private property. Contact me to collect.")
+tree_c = Tree.create(name: "Blackberry", description: "The beeries are ripe in July. Public land.")
+tree_d = Tree.create(name: "European crabapple", description: "These trees are by a beautiful park.")
 
 location_a = Location.create(latitude: "41.961546", longitude: "-88.017025")
 location_b = Location.create(latitude: "41.959387", longitude: "-88.003092")
