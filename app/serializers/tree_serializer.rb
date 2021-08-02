@@ -1,5 +1,5 @@
-class TreeSerializer # < ActiveModel::Serializer
+class TreeSerializer
   include JSONAPI::Serializer
 
-  attributes :id, :type, :description
+  attributes :id, :name, :description
 end

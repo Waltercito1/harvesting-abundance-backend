@@ -8,7 +8,10 @@ class HarvestSitesController < ApplicationController
 
   def show
     harvest_site = HarvestSite.find(params[:id])
-    render json: HarvestSiteSerializer.new(harvest_site)
+    options = {
+      include: [:tree, :location]
+    }
+    render json: HarvestSiteSerializer.new(harvest_site, options)
   end
 
   def create
@@ -37,7 +40,7 @@ class HarvestSitesController < ApplicationController
   end
 
   private
-  
+
     def harvest_site_params
       params.require(:harvest_site).permit(:tree_id, :location_id)
     end
