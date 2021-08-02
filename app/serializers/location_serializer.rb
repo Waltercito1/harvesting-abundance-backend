@@ -1,5 +1,5 @@
-class LocationSerializer < ActiveModel::Serializer
+class LocationSerializer # < ActiveModel::Serializer
   include JSONAPI::Serializer
-  
+
   attributes :id, :latitude, :longitude
 end

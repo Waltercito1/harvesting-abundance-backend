@@ -1,19 +1,16 @@
 class HarvestSitesController < ApplicationController
-  before_action :set_harvest_site, only: [:show, :update, :destroy]
 
-  # GET /harvest_sites
   def index
     harvest_sites = HarvestSite.all
 
     render json: HarvestSiteSerializer.new(harvest_sites)
   end
 
-  # GET /harvest_sites/1
   def show
+    harvest_site = HarvestSite.find(params[:id])
     render json: HarvestSiteSerializer.new(harvest_site)
   end
 
-  # POST /harvest_sites
   def create
     harvest_site = HarvestSite.new(harvest_site_params)
 
@@ -25,8 +22,8 @@ class HarvestSitesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /harvest_sites/1
   def update
+    harvest_site = HarvestSite.find(params[:id])
     if harvest_site.update(harvest_site_params)
       render json: HarvestSiteSerializer.new(harvest_site)
     else
@@ -34,18 +31,13 @@ class HarvestSitesController < ApplicationController
     end
   end
 
-  # DELETE /harvest_sites/1
   def destroy
+    harvest_site = HarvestSite.find(params[:id])
     harvest_site.destroy
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_harvest_site
-      harvest_site = HarvestSite.find(params[:id])
-    end
-
-    # Only allow a list of trusted parameters through.
+  
     def harvest_site_params
       params.require(:harvest_site).permit(:tree_id, :location_id)
     end
