@@ -46,10 +46,12 @@ ActiveRecord::Schema.define(version: 2021_08_02_023649) do
   create_table "harvest_sites", force: :cascade do |t|
     t.bigint "tree_id", null: false
     t.bigint "location_id", null: false
+    t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["location_id"], name: "index_harvest_sites_on_location_id"
     t.index ["tree_id"], name: "index_harvest_sites_on_tree_id"
+    t.index ["user_id"], name: "index_harvest_sites_on_user_id"
   end
 
   create_table "locations", force: :cascade do |t|
@@ -94,5 +96,6 @@ ActiveRecord::Schema.define(version: 2021_08_02_023649) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "harvest_sites", "locations"
   add_foreign_key "harvest_sites", "trees"
+  add_foreign_key "harvest_sites", "users"
   add_foreign_key "reviews", "harvest_sites"
 end

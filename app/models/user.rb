@@ -2,6 +2,10 @@ class User < ApplicationRecord
     has_secure_password
     
     has_one_attached :avatar
+    has_many :reviews
+    has_many :reviewed_harvest_sites, through: :reviews, source: :user
+
+    has_many :harvest_sites
 
     validates :first_name,  presence: true
     validates :last_name,  presence: true
@@ -22,8 +26,8 @@ class User < ApplicationRecord
         end
     end
 
-    # def full_name
-    #     self.first_name.capitalize + " " + self.last_name.capitalize
-    # end
+    def full_name
+        self.first_name.capitalize + " " + self.last_name.capitalize
+    end
 
 end

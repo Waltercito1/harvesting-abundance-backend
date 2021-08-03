@@ -3,6 +3,7 @@ class CreateHarvestSites < ActiveRecord::Migration[6.1]
     create_table :harvest_sites do |t|
       t.references :tree, null: false, foreign_key: true
       t.references :location, null: false, foreign_key: true
+      t.references :user, null: false, foreign_key: true
 
       t.timestamps
     end

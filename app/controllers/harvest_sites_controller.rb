@@ -11,7 +11,7 @@ class HarvestSitesController < ApplicationController
     options = {
       include: [:tree, :location]
     }
-    render json: HarvestSiteSerializer.new(harvest_site, options)
+    render json: HarvestSiteSerializer.new(harvest_site)
   end
 
   def create
