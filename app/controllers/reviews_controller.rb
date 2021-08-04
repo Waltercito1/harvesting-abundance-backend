@@ -3,12 +3,12 @@ class ReviewsController < ApplicationController
   def index
     reviews = Review.all
 
-    render json: reviews
+    render json: ReviewSerializer.new(reviews)
   end
 
   def show
     review = Review.find(params[:id])
-    render json: review
+    render json: ReviewSerializer.new(review)
   end
 
   def create
@@ -24,7 +24,7 @@ class ReviewsController < ApplicationController
   def update
     review = Review.find(params[:id])
     if review.update(review_params)
-      render json: review
+      render json: ReviewSerializer.new(review)
     else
       render json: review.errors, status: :unprocessable_entity
     end

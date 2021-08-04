@@ -3,15 +3,15 @@ class TreesController < ApplicationController
   def index
     trees = Tree.all
 
-    render json: trees
+    render json: TreeSerializer.new(trees)
   end
 
   def show
     tree = Tree.find(params[:id])
-    options = {
-      include: [:harvest_sites]
-    }
-    render json: TreeSerializer.new(tree, options)
+    # options = {
+    #   include: [:harvest_sites]
+    # }
+    render json: TreeSerializer.new(tree)
   end
 
   def create
@@ -27,7 +27,7 @@ class TreesController < ApplicationController
   def update
     tree = Tree.find(params[:id])
     if tree.update(tree_params)
-      render json: tree
+      render json: TreeSerializer.new(tree)
     else
       render json: tree.errors, status: :unprocessable_entity
     end

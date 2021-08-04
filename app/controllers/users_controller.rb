@@ -3,12 +3,12 @@ class UsersController < ApplicationController
   def index
     users = User.all
 
-    render json: users
+    render json: UserSerializer.new(users)
   end
 
   def show
     user = User.find(params[:id])
-    render json: user
+    render json: UserSerializer.new(user)
   end
 
   def create
@@ -24,7 +24,7 @@ class UsersController < ApplicationController
   def update
     user = User.find(params[:id])
     if user.update(user_params)
-      render json: user
+      render json: UserSerializer.new(user)
     else
       render json: user.errors, status: :unprocessable_entity
     end
