@@ -65,9 +65,11 @@ ActiveRecord::Schema.define(version: 2021_08_02_023649) do
     t.string "title"
     t.string "content"
     t.bigint "harvest_site_id", null: false
+    t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["harvest_site_id"], name: "index_reviews_on_harvest_site_id"
+    t.index ["user_id"], name: "index_reviews_on_user_id"
   end
 
   create_table "trees", force: :cascade do |t|
@@ -98,4 +100,5 @@ ActiveRecord::Schema.define(version: 2021_08_02_023649) do
   add_foreign_key "harvest_sites", "trees"
   add_foreign_key "harvest_sites", "users"
   add_foreign_key "reviews", "harvest_sites"
+  add_foreign_key "reviews", "users"
 end
