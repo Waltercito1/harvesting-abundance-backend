@@ -27,6 +27,11 @@ gem 'rack-cors'
 #gem 'active_model_serializers'
 gem 'jsonapi-serializer'
 
+# add gem like ‘devise’ and ‘devise-jwt’ for authentication and the dispatch and revocation of JWT tokens and ‘fast_jsonapi’ gem for json response
+gem 'devise'
+gem 'devise-jwt'
+gem 'fast_jsonapi'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
