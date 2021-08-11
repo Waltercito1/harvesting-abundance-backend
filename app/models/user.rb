@@ -1,6 +1,9 @@
 class User < ApplicationRecord
-    has_secure_password
-    
+    include Devise::JWT::RevocationStrategies::JTIMatcher
+
+    devise :database_authenticatable, :registerable, :validatable,
+    :jwt_authenticatable, jwt_revocation_strategy: self
+
     has_one_attached :avatar
     has_many :reviews
     has_many :reviewed_harvest_sites, through: :reviews, source: :user

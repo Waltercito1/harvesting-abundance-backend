@@ -80,18 +80,25 @@ ActiveRecord::Schema.define(version: 2021_08_02_023649) do
   end
 
   create_table "users", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
     t.string "username"
     t.string "first_name"
     t.string "last_name"
-    t.string "email"
-    t.string "password_digest"
     t.string "street"
     t.string "city"
     t.integer "zipcode"
     t.string "state"
     t.string "contact_info"
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.datetime "remember_created_at"
+    t.string "jti", null: false
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["jti"], name: "index_users_on_jti", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
