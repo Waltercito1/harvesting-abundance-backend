@@ -18,7 +18,7 @@ class HarvestSitesController < ApplicationController
     harvest_site = HarvestSite.new(harvest_site_params)
 
     if harvest_site.save
-      render json: harvest_site, status: :created, location: harvest_site
+      render json: HarvestSiteSerializer.new(harvest_site), status: :created, location: harvest_site
     else
       render json: harvest_site.errors, status: :unprocessable_entity
     end

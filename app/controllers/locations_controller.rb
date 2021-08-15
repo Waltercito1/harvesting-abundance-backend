@@ -15,7 +15,7 @@ class LocationsController < ApplicationController
     location = Location.new(location_params)
 
     if location.save
-      render json: location, status: :created, location: location
+      render json: LocationSerializer.new(location), status: :created, location: location
     else
       render json: location.errors, status: :unprocessable_entity
     end
@@ -38,6 +38,6 @@ class LocationsController < ApplicationController
   private
   
     def location_params
-      params.require(:location).permit(:latitude, :longitude, trees_attributes: [:id, :name, :description])
+      params.require(:location).permit(:latitude, :longitude)
     end
 end

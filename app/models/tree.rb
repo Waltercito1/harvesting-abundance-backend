@@ -6,6 +6,9 @@ class Tree < ApplicationRecord
 
     validate :allowed_image
 
+    accepts_nested_attributes_for :locations
+    accepts_nested_attributes_for :harvest_sites
+
     def allowed_image
         return unless main_image.attached?
       

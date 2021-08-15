@@ -18,7 +18,7 @@ class TreesController < ApplicationController
     tree = Tree.new(tree_params)
 
     if tree.save
-      render json: tree, status: :created, location: tree
+      render json: TreeSerializer.new(tree), status: :created, location: tree
     else
       render json: tree.errors, status: :unprocessable_entity
     end
@@ -41,6 +41,6 @@ class TreesController < ApplicationController
   private
 
     def tree_params
-      params.require(:tree).permit(:name, :description)
+      params.require(:tree).permit(:name, :description, locations_attributes: [:id, :latitude :longitude])
     end
 end
