@@ -41,6 +41,6 @@ class TreesController < ApplicationController
   private
 
     def tree_params
-      params.require(:tree).permit(:name, :description, locations_attributes: [:id, :latitude :longitude])
+      params.require(:tree).permit(:name, :description, locations_attributes: [:id, :latitude, :longitude])
     end
 end
