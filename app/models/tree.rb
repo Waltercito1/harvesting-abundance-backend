@@ -5,7 +5,7 @@ class Tree < ApplicationRecord
     has_one_attached :main_image
 
     validates :name, presence: true
-    validate :allowed_image
+    # validate :allowed_image
 
     accepts_nested_attributes_for :locations
     accepts_nested_attributes_for :harvest_sites

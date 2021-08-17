@@ -15,10 +15,18 @@ class TreesController < ApplicationController
   end
 
   def create
-    tree = Tree.new(tree_params)
+    # logger.info(params)
+    tree = Tree.new(name: params[:tree][:name], description: params[:tree][:description])
+    tree.save
 
-    if tree.save
-      render json: TreeSerializer.new(tree), status: :created, location: tree
+      location = Location.new(latitude: params[:tree][:locations_attributes][:latitude], longitude: params[:tree][:locations_attributes][:longitude])
+      
+      if location.save
+        harvest_site = HarvestSite.new(tree_id: tree.id, location_id: location.id, user_id: current_user.id)
+
+        if harvest_site.save
+        render json: TreeSerializer.new(tree), status: :created, location: tree
+      end
     else
       render json: tree.errors, status: :unprocessable_entity
     end
@@ -41,6 +49,6 @@ class TreesController < ApplicationController
   private
 
     def tree_params
-      params.require(:tree).permit(:name, :description, locations_attributes: [:id, :latitude, :longitude])
+      params.require(:tree).permit(:name, :description, locations_attributes: [:latitude, :longitude])
     end
 end
