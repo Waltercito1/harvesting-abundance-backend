@@ -1,15 +1,16 @@
-class TreeSerializer
+class TreeSerializer 
   include JSONAPI::Serializer
 
-  attributes :id, :name, :description, :harvest_sites, :locations, through: :harvest_sites, :main_image_format
+  attributes :id, :name, :description, :harvest_sites, :locations, :image_format
 
-  def main_image_format
-    return unless object.main_image.attached?
-byebug
-    object.main_image.blob.attributes
-      .slice('filename', 'byte_size')
-      .merge(url: object.image_url)
-      .tap { |attrs| attrs['name'] = attrs.delete('filename') }
+  attribute :image_format do |object|
+    byebug
+    if object.main_image.attached?
+      object.main_image.blob.attributes
+            .slice('filename')
+            .merge(url: object.image_url)
+            .tap{ |attributes| attributes['name'] = attributes.delete('filename')}
+    end
   end
 
   # has_many :harvest_sites

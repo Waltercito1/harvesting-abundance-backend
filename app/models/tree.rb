@@ -7,10 +7,11 @@ class Tree < ApplicationRecord
     has_one_attached :main_image
 
     validates :name, presence: true
-    # validate :allowed_image
-
+    
     accepts_nested_attributes_for :locations
     accepts_nested_attributes_for :harvest_sites
+
+    # validate :allowed_image
 
     # def allowed_image
     #     return unless main_image.attached?
@@ -25,7 +26,7 @@ class Tree < ApplicationRecord
     #     end
     # end
 
-    validates :main_image, content_type: [:png, :jpg, :jpeg], size: { less_than: 1.megabytes , message: 'is not given between size' }
+    # validates :main_image, content_type: [:png, :jpg, :jpeg], size: { less_than: 1.megabytes , message: 'is not given between size' }
 
     def image_url
         url_for(self.main_image)
