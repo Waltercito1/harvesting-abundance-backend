@@ -26,6 +26,7 @@ gem 'bootsnap', '>= 1.4.4', require: false
 gem 'rack-cors'
 #gem 'active_model_serializers'
 gem 'jsonapi-serializer'
+gem 'active_model_serializers'
 
 # add gem like ‘devise’ and ‘devise-jwt’ for authentication and the dispatch and revocation of JWT tokens and ‘fast_jsonapi’ gem for json response
 gem 'devise'

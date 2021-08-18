@@ -16,6 +16,7 @@ class TreesController < ApplicationController
 
   def create
     # logger.info(params)
+byebug
     tree = Tree.new(name: params[:tree][:name], description: params[:tree][:description])
     tree.save
 
