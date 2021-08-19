@@ -4,7 +4,7 @@ class TreeSerializer
   attributes :id, :name, :description, :harvest_sites, :locations, :image_format
 
   attribute :image_format do |object|
-    byebug
+   # byebug
     if object.main_image.attached?
       object.main_image.blob.attributes
             .slice('filename')
