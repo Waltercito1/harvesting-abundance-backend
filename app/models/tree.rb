@@ -3,6 +3,7 @@ class Tree < ApplicationRecord
 
     has_many :harvest_sites
     has_many :locations, through: :harvest_sites
+    has_many :users, through: :harvest_sites
 
     has_one_attached :main_image
 
