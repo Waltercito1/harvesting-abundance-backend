@@ -16,9 +16,10 @@ class TreesController < ApplicationController
 
   def create
     # logger.info(params)
-byebug
+# byebug
     # tree = Tree.new(name: params[:tree][:name], description: params[:tree][:description])
     tree = Tree.new(name: params[:name], description: params[:description])
+    tree.main_image.attach(params[:main_image])
     tree.save
 
       # location = Location.new(latitude: params[:tree][:locations_attributes][:latitude], longitude: params[:tree][:locations_attributes][:longitude])
