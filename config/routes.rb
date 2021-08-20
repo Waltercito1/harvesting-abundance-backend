@@ -7,7 +7,6 @@ Rails.application.routes.draw do
   resources :harvest_sites
   resources :locations
   resources :trees
-  resources :users
 
   devise_for :users, path: '', path_names: {
     sign_in: 'login',
