@@ -1,7 +1,7 @@
 class TreeSerializer 
   include JSONAPI::Serializer
 
-  attributes :id, :name, :description, :harvest_sites, :locations, :image_format
+  attributes :id, :name, :description, :harvest_sites, :locations, :users
 
   attribute :image_format do |object|
    # byebug
