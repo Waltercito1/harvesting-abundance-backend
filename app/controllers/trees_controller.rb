@@ -17,12 +17,10 @@ class TreesController < ApplicationController
   def create
     # logger.info(params)
 # byebug
-    # tree = Tree.new(name: params[:tree][:name], description: params[:tree][:description])
     tree = Tree.new(name: params[:name], description: params[:description])
     tree.main_image.attach(params[:main_image])
     tree.save
 
-      # location = Location.new(latitude: params[:tree][:locations_attributes][:latitude], longitude: params[:tree][:locations_attributes][:longitude])
       location = Location.new(latitude: params[:latitude], longitude: params[:longitude])
       
       if location.save
@@ -46,6 +44,7 @@ class TreesController < ApplicationController
   end
 
   def destroy
+    byebug
     tree = Tree.find(params[:id])
     tree.destroy
   end
@@ -53,6 +52,6 @@ class TreesController < ApplicationController
   private
 
     def tree_params
-      params.permit(:name, :description, :latitude, :longitude, :main_image)
+      params.permit(:id, :name, :description, :latitude, :longitude, :main_image)
     end
 end
