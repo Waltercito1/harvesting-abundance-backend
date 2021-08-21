@@ -1,7 +1,7 @@
 class Tree < ApplicationRecord
     include Rails.application.routes.url_helpers
 
-    has_many :harvest_sites
+    has_many :harvest_sites, dependent: :destroy
     has_many :locations, through: :harvest_sites
     has_many :users, through: :harvest_sites
 

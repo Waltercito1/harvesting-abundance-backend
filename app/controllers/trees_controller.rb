@@ -44,9 +44,14 @@ class TreesController < ApplicationController
   end
 
   def destroy
-    byebug
     tree = Tree.find(params[:id])
-    tree.destroy
+    if tree.destroy
+      logger.info('delete success')
+      render status: :ok
+    else
+      logger.error('delete fail')
+      render json: tree.errors, status: :unprocessable_entity
+    end
   end
 
   private
