@@ -17,15 +17,17 @@ class TreesController < ApplicationController
   def create
     tree = Tree.new(name: params[:name], description: params[:description])
     tree.main_image.attach(params[:main_image])
-    tree.save
-
+    if tree.save
       location = Location.new(latitude: params[:latitude], longitude: params[:longitude])
-      
       if location.save
         harvest_site = HarvestSite.new(tree_id: tree.id, location_id: location.id, user_id: current_user.id)
-
         if harvest_site.save
-        render json: TreeSerializer.new(tree), status: :created, location: tree
+          render json: TreeSerializer.new(tree), status: :created, location: tree
+        else
+          render json: harvest_site.errors, status: :unprocessable_entity    
+        end
+      else
+        render json: location.errors, status: :unprocessable_entity  
       end
     else
       render json: tree.errors, status: :unprocessable_entity
