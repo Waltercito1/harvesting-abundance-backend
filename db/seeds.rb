@@ -10,10 +10,21 @@ User.create(username: "walter_aab", first_name: "Walter", last_name: "Aab", emai
 User.create(username: "dario_losa", first_name: "Dario", last_name: "Losa", email: "losadario@gmail.com", password: "password!!!", street: "1001 Summerfield Dr.", city: "Roselle", state: "IL", zipcode: 60172)
 User.create(username: "jane_lopez", first_name: "Jane", last_name: "Lopez", email: "janelopez@gmail.com", password: "password!!!", street: "250 W George St", city: "Itasca", state: "IL", zipcode: 60143)
 
-tree_a = Tree.create(name: "Black mulberry", description: "These trees are on public land and the berries are great.", main_image: 'public/seed-images/black-mulberry-tree.jpeg')
+tree_a = Tree.new(name: "Black mulberry", description: "These trees are on public land and the berries are great.")
+    tree_a.main_image.attach(io: File.open('public/seed-images/black-mulberry-tree.jpeg'), filename: 'black-mulberry-tree.jpeg')
+    tree_a.save
+    
 tree_b = Tree.create(name: "Pear", description: "This tree is in private property. Contact me to collect.")
+    tree_b.main_image.attach(io: File.open('public/seed-images/pear-tree.jpeg'), filename: 'pear-tree.jpeg')
+    tree_b.save
+    
 tree_c = Tree.create(name: "Blackberry", description: "The beeries are ripe in July. Public land.")
+    tree_c.main_image.attach(io: File.open('public/seed-images/blackberry.jpeg'), filename: 'blackberry.jpeg')
+    tree_c.save
+    
 tree_d = Tree.create(name: "European crabapple", description: "These trees are by a beautiful park.")
+    tree_d.main_image.attach(io: File.open('public/seed-images/European-CrabApple-1.jpeg'), filename: 'European-CrabApple-1.jpeg')
+    tree_d.save
 
 location_a = Location.create(latitude: "41.961546", longitude: "-88.017025")
 location_b = Location.create(latitude: "41.959387", longitude: "-88.003092")
