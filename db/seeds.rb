@@ -10,7 +10,7 @@ User.create(username: "walter_aab", first_name: "Walter", last_name: "Aab", emai
 User.create(username: "dario_losa", first_name: "Dario", last_name: "Losa", email: "losadario@gmail.com", password: "password!!!", street: "1001 Summerfield Dr.", city: "Roselle", state: "IL", zipcode: 60172)
 User.create(username: "jane_lopez", first_name: "Jane", last_name: "Lopez", email: "janelopez@gmail.com", password: "password!!!", street: "250 W George St", city: "Itasca", state: "IL", zipcode: 60143)
 
-tree_a = Tree.create(name: "Black mulberry", description: "These trees are on public land and the berries are great.")
+tree_a = Tree.create(name: "Black mulberry", description: "These trees are on public land and the berries are great.", main_image: 'public/seed-images/black-mulberry-tree.jpeg')
 tree_b = Tree.create(name: "Pear", description: "This tree is in private property. Contact me to collect.")
 tree_c = Tree.create(name: "Blackberry", description: "The beeries are ripe in July. Public land.")
 tree_d = Tree.create(name: "European crabapple", description: "These trees are by a beautiful park.")
