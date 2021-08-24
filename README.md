@@ -1,7 +1,7 @@
 # Harvesting Abundance API
 Single Page Application - Fifth and final portfolio project for Flatiron (102020 - ONL - SE - PT)
 
-Welcome to Harvesting Abundance. This app allows the users to... 
+Welcome to Harvesting Abundance. This app allows the users to securely log-in/sign-up to the app, browse the app and view the details of the already existing trees, create and delete a new tree. 
 
 ## Installation
 You can install this application by running 
