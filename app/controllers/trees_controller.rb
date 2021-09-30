@@ -8,9 +8,6 @@ class TreesController < ApplicationController
 
   def show
     tree = Tree.find(params[:id])
-    # options = {
-    #   include: [:harvest_sites]
-    # }
     render json: TreeSerializer.new(tree)
   end
 
