@@ -8,9 +8,6 @@ class HarvestSitesController < ApplicationController
 
   def show
     harvest_site = HarvestSite.find(params[:id])
-    # options = {
-    #   include: [:tree, :location]
-    # }
     render json: HarvestSiteSerializer.new(harvest_site)
   end
 
