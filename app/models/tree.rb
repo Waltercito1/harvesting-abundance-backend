@@ -27,8 +27,6 @@ class Tree < ApplicationRecord
         end
     end
 
-    # validates :main_image, content_type: [:png, :jpg, :jpeg], size: { less_than: 1.megabytes , message: 'is not given between size' }
-
     def image_url
         url_for(self.main_image)
     end
